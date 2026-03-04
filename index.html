@@ -1410,7 +1410,7 @@
       </div>
       <h1>今天属于你</h1>
       <p class="subtitle">
-        <b id="recipientName"> 巴尼 </b>，生日快乐。<br/>
+        <b id="recipientName">（把这里改成TA的名字）</b>，生日快乐。<br/>
         请戴上耳机，为我们留下一点时间。<br/>
         点开下面的按钮——一层一层拆开。
       </p>
@@ -1424,11 +1424,12 @@
       <!-- 第1个小盒子：弹幕祝福 -->
       <div class="card" style="animation-delay: 0.1s">
         <p class="card-title">第 1 个小盒子 - 生日祝福</p>
+        <div id="box1Content" style="display:none">
         <div class="danmaku-screen" id="danmakuScreen">
           <div class="danmaku-bg" id="danmakuBg"></div>
           <div class="danmaku-hint" id="danmakuHint">点击下方按钮开始 🎬</div>
         </div>
-        <div class="audio-controls active" id="audioControls">
+        <div class="audio-controls" id="audioControls">
           <div class="audio-row">
             <button class="play-btn male-btn" id="playMaleBtn">
               <span class="play-icon"></span>
@@ -1443,6 +1444,7 @@
         <div class="next-btn-wrap">
           <button class="btn next-box-btn" id="box2Btn">🎵 打开第 2 个小盒子</button>
         </div>
+        </div><!-- end box1Content -->
       </div>
 
       <!-- 第2个小盒子：歌词播放器 -->
@@ -1515,7 +1517,7 @@
                 <p>图片占位区域<br><small>上传 gift.jpg 后将自动显示</small></p>
               </div>
             </div>
-            <p class="gift-message">这下有理由玩镜了！<br>快登录游戏领取一下吧 🎮</p>
+            <p class="gift-message">这个送给你<br>快登录游戏领取一下吧 🎮</p>
           </div>
           <div class="next-btn-wrap">
             <button class="btn next-box-btn" id="finalBtn">🎂 最后一段</button>
@@ -1527,12 +1529,12 @@
       <div class="card" style="animation-delay: 0.4s">
         <p class="card-title">最后一段 - 许愿时刻</p>
         <div class="card-content" id="finalText">
-          其实
+          其实不是生日，
         </div>
         
         <div class="reveal" id="finalReveal">
           <p class="card-content">
-            其实不是生日，我们依旧会在你身边。
+            我们依旧会在你身边。
           </p>
           
           <div class="cake-container" id="cakeContainer">
@@ -1591,17 +1593,20 @@
       
       // 第1个小盒子 - 男生祝福段落（每行一条弹幕，从下往上滚）
       blessingMale: [
-        "巴尼 生日快乐",
-        "缘分让我们在直播间相遇",
-        "认识你之前没想过游戏还能这么打。",
-        "跟你开黑那些局，不管是猛攻还是躺赢",
-        "那种并肩的感觉是真的爽",
-        "但真正珍贵的，是那份一起拼过的畅快",
-        "技术是一方面，更难得的是你这个人。",
-        "局里靠谱，局外也是",
-        "新的一岁，愿你段位一路往上，生活也顺到底。",
-        "请以后继续带我冲。",
-        "愿好运常驻，胜利常来"
+        "感谢那一天，让我们在直播间里刚好并肩",
+        "那些一起开黑的夜晚、猛攻的瞬间",
+        "默契到不用多说的话，早就成了时间里最亮的坐标",
+        "你在局里冲锋，我在后排打call",
+        "你稳住节奏，我负责跟上",
+        "一次次猛攻，一次次得吃",
+        "真正珍贵的，是那份一起拼过的畅快",
+        "愿独一无二的你，在新的一岁",
+        "所行之路皆顺意，所遇之人皆良善",
+        "锋芒不减，少年意气常在",
+        "看过山河辽阔，也守得住内心澄澈",
+        "愿好运常驻，胜利常来",
+        "也愿我们岁岁常新，年年并肩",
+        "未来的副本，继续一起解锁吧"
       ],
 
       // 第1个小盒子 - 女生祝福段落
@@ -1632,7 +1637,7 @@
       bgFemale: "bg-female.jpg",
       
       // 歌曲文件路径（MP4也支持）
-      songFile: "歌曲.mp3",
+      songFile: "歌曲.MP4",
       
       // 第3个小盒子 - 礼物图片（上传图片后填写路径）
       giftImage: "gift.jpg",
@@ -1754,6 +1759,8 @@
 
     // 第1个小盒子：点击打开直接滚动到区域
     document.getElementById('box1Btn').addEventListener('click', function() {
+      document.getElementById('box1Content').style.display = 'block';
+      document.getElementById('audioControls').classList.add('active');
       document.getElementById('danmakuScreen').closest('.card')
         .scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
