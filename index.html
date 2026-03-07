@@ -1723,7 +1723,7 @@
       const screenH = screen.offsetHeight;
       const lineHeight = 44; // 每条轨道高度，足够不重叠
       const visibleLines = Math.floor(screenH / lineHeight); // 同时最多显示几条
-      const interval = 1200; // 每条弹幕发射间隔ms
+      const interval = 2000; // 每条弹幕发射间隔ms
       // 动画时长 = 让一条从底部走到顶部所需时间
       const duration = visibleLines * interval / 1000 + 0.5;
 
